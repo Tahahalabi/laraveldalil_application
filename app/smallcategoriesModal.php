@@ -10,5 +10,5 @@ class smallcategoriesModal extends Model
     protected $table = 'smallcategories';
 
     // Primary key
-    public $primaryKey = 'id';
+    public $primaryKey = 'smallcategories_id';
 }

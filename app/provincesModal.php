@@ -10,5 +10,5 @@ class provincesModal extends Model
     protected $table = 'provinces';
 
     // Primary key
-    public $primaryKey = 'id';
+    public $primaryKey = 'provinces_id';
 }

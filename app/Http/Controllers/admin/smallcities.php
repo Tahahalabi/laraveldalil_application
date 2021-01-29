@@ -17,8 +17,8 @@ class smallcities extends Controller
 {
     public function index(Request $request)
     {
-        $getAllSmallCities = smallcitiesModal::select('*', 'smallcities.id as smallcityid')
-        ->join('cities', 'cities.id', '=', 'smallcities.cid')
+        $getAllSmallCities = smallcitiesModal::select('*', 'smallcities.smallcategories_id as smallcityid')
+        ->join('smallcategories_cities', 'smallcategories_cities.id', '=', 'smallcities.smallcategories_cid')
         ->get();
 
         $getAllCities = citiesModal::select('*')->get();
@@ -42,8 +42,8 @@ class smallcities extends Controller
             ->withInput();
         } else {
             $newCity = new smallcitiesModal;
-            $newCity->sm_name = $request->cityname;
-            $newCity->cid = $request->cityid;
+            $newCity->smallcities_name = $request->cityname;
+            $newCity->smallcities_cid = $request->cityid;
             $newCity->save();
     
             return redirect("/admin/panel/smallcities");
@@ -80,8 +80,8 @@ class smallcities extends Controller
             ->withInput();
         } else {
             $updateCity = smallcitiesModal::find($request->editsmallcityid);
-            $updateCity->sm_name = $request->editsmallcityname;
-            $updateCity->cid = $request->editcityid;
+            $updateCity->smallcities_name = $request->editsmallcityname;
+            $updateCity->smallcities_cid = $request->editcityid;
             $updateCity->save();
 
             return redirect("/admin/panel/smallcities");

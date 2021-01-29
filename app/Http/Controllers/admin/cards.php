@@ -23,21 +23,21 @@ class cards extends Controller
         $getAllCards;
 
         if ($request->api == "true" && $request->catid != "") {
-            $getAllCards = cardsModal::select('*', 'cards.id as cardid', 'categories.id as categoryid', 'categories.name as categoryname')
-            ->join('cities', 'cities.id', '=', 'cards.cityid')
-            ->join('provinces', 'provinces.id', '=', 'cards.proid')
-            ->join('categories', 'categories.id', '=', 'cards.cid')
-            ->orderBy('cards.cid', 'desc')
-            ->orderBy('cards.id', 'desc')
-            ->where('cards.cid', '=', $request->catid)
+            $getAllCards = cardsModal::select('*', 'cards.cards_id as cardid', 'categories.categories_id as categoryid', 'categories.categories_name as categoryname')
+            ->join('cities', 'cities.cities_id', '=', 'cards.cards_cityid')
+            ->join('provinces', 'provinces._provincesid', '=', 'cards.cards_proid')
+            ->join('categories', 'categories.categories_id', '=', 'cards.cards_cid')
+            ->orderBy('cards.cards_cid', 'desc')
+            ->orderBy('cards.cards_id', 'desc')
+            ->where('cards.cards_cid', '=', $request->catid)
             ->get();
         } else {
-            $getAllCards = cardsModal::select('*', 'cards.id as cardid', 'categories.id as categoryid', 'categories.name as categoryname')
-            ->join('cities', 'cities.id', '=', 'cards.cityid')
-            ->join('provinces', 'provinces.id', '=', 'cards.proid')
-            ->join('categories', 'categories.id', '=', 'cards.cid')
-            ->orderBy('cards.cid', 'desc')
-            ->orderBy('cards.id', 'desc')
+            $getAllCards = cardsModal::select('*', 'cards.cards_id as cardid', 'categories.categories_id as categoryid', 'categories.categories_name as categoryname')
+            ->join('cities', 'cities.cities_id', '=', 'cards.cards_cityid')
+            ->join('provinces', 'provinces._provincesid', '=', 'cards.cards_proid')
+            ->join('categories', 'categories.categories_id', '=', 'cards.cards_cid')
+            ->orderBy('cards.cards_cid', 'desc')
+            ->orderBy('cards.cards_id', 'desc')
             ->get();
         }
 
@@ -46,7 +46,7 @@ class cards extends Controller
 
             if ($getAllCards[$i]->smcaid != NULL) {
                 $getsmallCategory = smallcategoriesModal::select('*')
-                ->where('smallcategories.id', '=', $getAllCards[$i]->smcaid)
+                ->where('smallcategories.smallcategories_id', '=', $getAllCards[$i]->smcaid)
                 ->first();
 
                 if ($getsmallCategory) {
@@ -59,7 +59,7 @@ class cards extends Controller
 
             if ($getAllCards[$i]->smid != NULL) {
                 $getsmallCity = smallcitiesModal::select('*')
-                ->where('smallcities.id', '=', $getAllCards[$i]->smid)
+                ->where('smallcities.smallcities_id', '=', $getAllCards[$i]->smid)
                 ->first();
 
                 if ($getsmallCity) {
@@ -82,7 +82,7 @@ class cards extends Controller
 
         $getAllCategoreis = categoriesModal::select('*')->get();
 
-        $getAllCities = citiesModal::select('*')->orderBy('cities.ordernum', 'asc')->get();
+        $getAllCities = citiesModal::select('*')->orderBy('cities.cities_ordernum', 'asc')->get();
 
         $getsmallCategories = smallcategoriesModal::select('*')->get();
 
@@ -111,26 +111,26 @@ class cards extends Controller
             $newCard->showfirst = $request->showfirst;
         }
         
-        $newCard->smcaid = $request->smallcategoryid;
-        $newCard->smid = $request->smallcityid;
-        $newCard->cityid = $request->cityid;
-        $newCard->proid = $request->provinceid;
-        $newCard->cid = $request->categoryid;
-        $newCard->title = $request->title;
-        $newCard->description = $request->description;
-        $newCard->location = $request->location;
-        $newCard->phone1 = $request->phone1;
-        $newCard->phone2 = $request->phone2;
-        $newCard->phone3 = $request->phone3;
-        $newCard->link = $request->link;
-        $newCard->facebook = $request->facebook;
-        $newCard->gmail = $request->gmail;
-        $newCard->instagram = $request->instagram;
-        $newCard->twitter = $request->twitter;
-        $newCard->youtube = $request->youtube;
-        $newCard->topleftword = $request->topleftword;
-        $newCard->bottomrightword = $request->bottomrightword;
-        $newCard->map = $request->map;
+        $newCard->cards_smcaid = $request->smallcategoryid;
+        $newCard->cards_smid = $request->smallcityid;
+        $newCard->cards_cityid = $request->cityid;
+        $newCard->cards_proid = $request->provinceid;
+        $newCard->cards_cid = $request->categoryid;
+        $newCard->cards_title = $request->title;
+        $newCard->cards_description = $request->description;
+        $newCard->cards_location = $request->location;
+        $newCard->cards_phone1 = $request->phone1;
+        $newCard->cards_phone2 = $request->phone2;
+        $newCard->cards_phone3 = $request->phone3;
+        $newCard->cards_link = $request->link;
+        $newCard->cards_facebook = $request->facebook;
+        $newCard->cards_gmail = $request->gmail;
+        $newCard->cards_instagram = $request->instagram;
+        $newCard->cards_twitter = $request->twitter;
+        $newCard->cards_youtube = $request->youtube;
+        $newCard->cards_topleftword = $request->topleftword;
+        $newCard->cards_bottomrightword = $request->bottomrightword;
+        $newCard->cards_map = $request->map;
 
 
         if ($request->hasFile('photo')) {
@@ -145,7 +145,7 @@ class cards extends Controller
             // Upload Image
             $path = $request->photo->storeAs('public/uploads', $fileNameToStore);
 
-            $newCard->photo = '/storage/uploads/' . $fileNameToStore;
+            $newCard->cards_photo = '/storage/uploads/' . $fileNameToStore;
 
             //$newabout->photo = '/storage/app/public/uploads/' . $fileNameToStore;
 

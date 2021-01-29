@@ -36,13 +36,13 @@ class advertisement extends Controller
             // Upload Image
             $path = $request->file->storeAs('public/uploads', $fileNameToStore);
 
-            $advertisement->src = '/storage/uploads/' . $fileNameToStore;
+            $advertisement->advertisement_src = '/storage/uploads/' . $fileNameToStore;
 
             //$newabout->photo = '/storage/app/public/uploads/' . $fileNameToStore;
 
 
         } else {
-            $advertisement->src = "";
+            $advertisement->advertisement_src = "";
         }
 
         $advertisement->save();

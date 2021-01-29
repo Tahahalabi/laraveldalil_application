@@ -41,12 +41,12 @@ class cities extends Controller
             ->withInput();
         } else {
             $newCity = new citiesModal;
-            $newCity->c_name = $request->cityname;
-            $newCity->pid = $request->provinceid;
-            if ($request->cityorder == "") {
-                $request->cityorder = 1000;
+            $newCity->cities_name = $request->cityname;
+            $newCity->cities_pid = $request->provinceid;
+            if ($request->cities_cityorder == "") {
+                $request->cities_cityorder = 1000;
             }
-            $newCity->ordernum = $request->cityorder;
+            $newCity->cities_ordernum = $request->cityorder;
             $newCity->save();
     
             return redirect("/admin/panel/cities");
@@ -83,12 +83,12 @@ class cities extends Controller
             ->withInput();
         } else {
             $updateCity = citiesModal::find($request->editcityid);
-            $updateCity->c_name = $request->cityname;
-            $updateCity->pid = $request->provinceid;
-            if ($request->cityorder == "") {
-                $request->cityorder = 1000;
+            $updateCity->cities_name = $request->cityname;
+            $updateCity->cities_pid = $request->provinceid;
+            if ($request->cities_cityorder == "") {
+                $request->cities_cityorder = 1000;
             }
-            $updateCity->ordernum = $request->cityorder;
+            $updateCity->cities_ordernum = $request->cityorder;
             $updateCity->save();
 
             return redirect("/admin/panel/cities");

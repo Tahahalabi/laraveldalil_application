@@ -10,5 +10,5 @@ class categoriesModal extends Model
     protected $table = 'categories';
 
     // Primary key
-    public $primaryKey = 'id';
+    public $primaryKey = 'categories_id';
 }

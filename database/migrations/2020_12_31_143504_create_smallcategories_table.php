@@ -14,9 +14,9 @@ class CreateSmallcategoriesTable extends Migration
     public function up()
     {
         Schema::create('smallcategories', function (Blueprint $table) {
-            $table->id();
-            $table->biginteger('caid');
-            $table->string('smc_name');
+            $table->id('smallcategories_id');
+            $table->biginteger('smallcategories_caid');
+            $table->string('smallcategories_name');
             $table->timestamps();
         });
     }

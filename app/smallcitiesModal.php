@@ -10,5 +10,5 @@ class smallcitiesModal extends Model
     protected $table = 'smallcities';
 
     // Primary key
-    public $primaryKey = 'id';
+    public $primaryKey = 'smallcities_id';
 }

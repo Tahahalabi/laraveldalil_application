@@ -33,7 +33,7 @@ class provinces extends Controller
             ->withInput();
         } else {
             $newCategory = new provincesModal;
-            $newCategory->p_name = $request->provincename;
+            $newCategory->province_name = $request->provincename;
             $newCategory->save();
     
             return redirect("/admin/panel/provinces");
@@ -69,7 +69,7 @@ class provinces extends Controller
             ->withInput();
         } else {
             $updateCategory = provincesModal::find($request->provinceid);
-            $updateCategory->p_name = $request->provincename;
+            $updateCategory->province_name = $request->provincename;
             $updateCategory->save();
 
             return redirect("/admin/panel/provinces");

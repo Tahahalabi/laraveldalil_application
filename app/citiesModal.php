@@ -10,5 +10,5 @@ class citiesModal extends Model
     protected $table = 'cities';
 
     // Primary key
-    public $primaryKey = 'id';
+    public $primaryKey = 'cities_id';
 }

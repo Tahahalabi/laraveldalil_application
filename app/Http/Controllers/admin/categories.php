@@ -32,7 +32,7 @@ class categories extends Controller
             ->withInput();
         } else {
             $newCategory = new categoriesModal;
-            $newCategory->name = $request->categoryname;
+            $newCategory->categories_name = $request->categoryname;
             $newCategory->save();
     
             return redirect("/admin/panel/categories");
@@ -68,7 +68,7 @@ class categories extends Controller
             ->withInput();
         } else {
             $updateCategory = categoriesModal::find($request->categoryid);
-            $updateCategory->name = $request->categoryname;
+            $updateCategory->categories_name = $request->categoryname;
             $updateCategory->save();
 
             return redirect("/admin/panel/categories");

@@ -14,10 +14,10 @@ class CreateSmallcitiesTable extends Migration
     public function up()
     {
         Schema::create('smallcities', function (Blueprint $table) {
-            $table->id();
-            $table->biginteger('cid');
-            $table->string('sm_name');
-            $table->integer('ordernum');
+            $table->id('smallcities_id');
+            $table->biginteger('smallcities_cid');
+            $table->string('smallcities_name');
+            $table->integer('smallcities_ordernum');
             $table->timestamps();
         });
     }

@@ -13,8 +13,8 @@ class smallcategoriesController extends Controller
 {
     public function index(Request $request)
     {
-        $getAllSmallCategories = smallcategoriesModal::select('*', 'smallcategories.id as smallcategoryid')
-        ->join('categories', 'categories.id', '=', 'smallcategories.caid')
+        $getAllSmallCategories = smallcategoriesModal::select('*', 'smallcategories.smallcategories_id as smallcategoryid')
+        ->join('categories', 'categories.categories_id', '=', 'smallcategories.smallcategories_caid')
         ->get();
 
         $getAllCategories = categoriesModal::select('*')->get();
@@ -38,8 +38,8 @@ class smallcategoriesController extends Controller
             ->withInput();
         } else {
             $newSmallCategories = new smallcategoriesModal;
-            $newSmallCategories->smc_name = $request->smallcategoryname;
-            $newSmallCategories->caid = $request->categoryid;
+            $newSmallCategories->smallcategories_name = $request->smallcategoryname;
+            $newSmallCategories->smallcategories_caid = $request->categoryid;
             $newSmallCategories->save();
     
             return redirect("/admin/panel/smallcategories");
@@ -76,8 +76,8 @@ class smallcategoriesController extends Controller
             ->withInput();
         } else {
             $smallCategories = smallcategoriesModal::find($request->editsmallcategoriesid);
-            $smallCategories->smc_name = $request->smallcategoryname;
-            $smallCategories->caid = $request->categoryid;
+            $smallCategories->smallcategories_name = $request->smallcategoryname;
+            $smallCategories->smallcategories_caid = $request->categoryid;
             $smallCategories->save();
 
             return redirect("/admin/panel/smallcategories");

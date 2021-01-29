@@ -10,5 +10,5 @@ class cardsModal extends Model
     protected $table = 'cards';
 
     // Primary key
-    public $primaryKey = 'id';
+    public $primaryKey = 'cards_id';
 }

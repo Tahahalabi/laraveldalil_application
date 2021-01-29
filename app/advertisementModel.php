@@ -10,5 +10,5 @@ class advertisementModel extends Model
     protected $table = 'advertisement';
 
     // Primary key
-    public $primaryKey = 'id';
+    public $primaryKey = 'advertisement_id';
 }

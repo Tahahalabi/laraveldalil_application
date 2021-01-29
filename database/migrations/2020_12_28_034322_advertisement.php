@@ -14,8 +14,8 @@ class Advertisement extends Migration
     public function up()
     {
         Schema::create('advertisement', function (Blueprint $table) {
-            $table->id();
-            $table->string('src');
+            $table->id('advertisement_id');
+            $table->string('advertisement_src');
             $table->timestamps();
         });
     }
